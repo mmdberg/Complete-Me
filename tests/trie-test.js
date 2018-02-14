@@ -1,6 +1,10 @@
 import { expect } from 'chai';
 import Node from '../lib/Node';
 import Trie from '../lib/Trie';
+import fs from 'fs';
+
+const text = "/usr/share/dict/words"
+const dictionary = fs.readFileSync(text).toString().trim().split('\n')
 
 //console.log(JSON.stringify(trie, null, 4))
 
@@ -48,18 +52,20 @@ describe('TRIE', () => {
 
   });
 
-  // describe('Suggest', () => {
-  //   //autocomplete
-  //   it('should suggest array of words', () => {
-  //     expect(trie.suggest('piz')).to.equal(['pizza'])
-  //   })
+  describe('Suggest', () => {
+    it('should suggest array of words', () => {
+      trie.insert('pizza');
+      trie.insert('piano');
+      trie.insert('dog');
+      console.log(JSON.stringify(trie, null, 4))
+      expect(trie.suggest('pi')).to.deep.equal(['pizza', 'piano'])
+
+    })
     
-  // })
+  })
+})
 
   // describe('Delete', () => {
 
     
-  // })
-
-});
-
+//})
