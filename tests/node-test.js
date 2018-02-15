@@ -5,28 +5,23 @@ describe('NODE', () => {
   let node;
 
   beforeEach(() => {
-    node = new Node('pizza')
+    node = new Node()
   })
 
-  it('should be a thing', () => {
+  it('should instantiate our good friend node', () => {
     expect(node).to.exist
   })
 
   it('should store nodes', () => {
     expect(node.children).to.deep.equal({})
-  });
+  })
 
-  // it('should default next to null', () => {
-  //   expect(node.next).to.equal(null);
-  // })
+  it('should start with no popularity', () => {
+    expect(node.popularity).to.equal(0)
+  })
 
-  // it('should take data and assign it to data prop', () => {
-  //   expect(node.data).to.equal('pizza')
-  // })
-
-  // it('should take data as a parameter and assign it to data prop', () => {
-  //   let node = new Node('pineapple')
-  //   expect(node.data).to.equal('pineapple')
-  // })
+  it('should not be a complete word', () => {
+    expect(node.completeWord).to.equal(false)
+  })
 
 })

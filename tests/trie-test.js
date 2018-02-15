@@ -34,44 +34,39 @@ describe('TRIE', () => {
       expect(trie.count).to.equal(1);
     })
 
-    it('should create keys in children object of first letter', () => {
+    it('should create keys in children object', () => {
       trie.insert('pizza');
       trie.insert('dog')
       expect(Object.keys(trie.children)).to.deep.equal(['p', 'd'])
     })
 
-    it('should be able to take in more than one word starting w/ the same letter', () => {
+    it('should be able to take in and store multiple words', () => {
       trie.insert('tacocat');
       trie.insert('pizza');
       trie.insert('cat');
       trie.insert('piano');
       expect(Object.keys(trie.children)).to.deep.equal(['t', 'p', 'c']);
       expect(trie.count).to.equal(4);
-
     })
-
   });
 
-  describe('Suggest', () => {
-    it('should suggest array of words', () => {
+  describe('SUGGEST', () => {
+    it('should suggest array of words based on prefix', () => {
       trie.insert('pizza');
       trie.insert('piano');
       trie.insert('dog');
-      // console.log(JSON.stringify(trie, null, 4))
+      trie.insert('patio');
       expect(trie.suggest('pi')).to.deep.equal(['pizza', 'piano'])
-
     })
-    
   })
 
-  describe.skip('Populate', () => {
+  describe.skip('POPULATE', () => {
     it('should populate a dictionary', () => {
       expect(trie.count).to.equal(0);
 
       trie.populate(dictionary);
 
       expect(trie.count).to.equal(235886);
-
     })
 
     it('should suggest words from the dictionary', () => {
@@ -79,39 +74,28 @@ describe('TRIE', () => {
       trie.populate(dictionary);
 
       expect(trie.suggest('piz')).to.deep.equal(["pize", "pizza", "pizzeria", "pizzicato", "pizzle"])
-
     })
   })
 
-
-  describe('Select', () => {
+  describe('SELECT', () => {
     it('should prioritize words previously selected', () => {
       trie.insert('pizza');
       trie.insert('piano');
       trie.insert('patio');
       trie.insert('dog');
       trie.select('piano');
-      // console.log(JSON.stringify(trie, null, 4))
       expect(trie.suggest('p')).to.deep.equal(['piano', 'pizza', 'patio'])
-
     })
+  })
 
-    
-})
-
-  describe('Delete', () => {
-    it('should delete unwanted words', () => {
+  describe('DELETE', () => {
+    it('should delete unwanted words from suggestion list', () => {
       trie.insert('polar');
       trie.insert('piano');
       trie.insert('pizzicato');
       expect(trie.suggest('pi')).to.deep.equal(['piano', 'pizzicato'])
       trie.delete('pizzicato')
-      // console.log(JSON.stringify(trie, null, 4))
       expect(trie.suggest('pi')).to.deep.equal(['piano'])
-
-    })
-
-    
-})
-
+    }) 
   })
+})
