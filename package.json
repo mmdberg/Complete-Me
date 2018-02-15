@@ -1,9 +1,9 @@
 {
-  "name": "TDD",
-  "version": "1.0.0",
-  "description": "",
+  "name": "@mmdberg/complete-me",
+  "version": "1.0.1",
   "main": "index.js",
   "directories": {
+    "lib": "lib",
     "test": "tests"
   },
   "scripts": {
@@ -23,5 +23,15 @@
     "eslint": "^4.9.0",
     "mocha": "^3.4.2",
     "webpack": "^3.3.0"
-  }
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mmdberg/Complete-Me.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mmdberg/Complete-Me/issues"
+  },
+  "homepage": "https://github.com/mmdberg/Complete-Me#readme",
+  "description": ""
 }
